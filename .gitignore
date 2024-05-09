@@ -5,7 +5,7 @@
 .eslintignore
 npm.lock
 jsconfig.json
-
+pnpm-lock.yaml
 ############################
 # OS X
 ############################
