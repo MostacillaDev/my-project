@@ -852,6 +852,42 @@ export interface ApiConsultConsult extends Schema.CollectionType {
   };
 }
 
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'order';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    date_order: Attribute.Date;
+    shipping_date: Attribute.Date;
+    delivery_date: Attribute.Date;
+    payment_method: Attribute.String;
+    order_status: Attribute.String;
+    total_order: Attribute.Decimal;
+    shipping_adress: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -942,6 +978,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::appointment.appointment': ApiAppointmentAppointment;
       'api::consult.consult': ApiConsultConsult;
+      'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'api::producto.producto': ApiProductoProducto;
     }

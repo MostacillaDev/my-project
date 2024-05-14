@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date_order": {
+      "type": "date"
+    },
+    "shipping_date": {
+      "type": "date"
+    },
+    "delivery_date": {
+      "type": "date"
+    },
+    "payment_method": {
+      "type": "string"
+    },
+    "order_status": {
+      "type": "string"
+    },
+    "total_order": {
+      "type": "decimal"
+    },
+    "shipping_adress": {
+      "type": "blocks"
+    }
+  }
+}
