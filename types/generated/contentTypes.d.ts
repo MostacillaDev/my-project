@@ -821,6 +821,43 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    icon: Attribute.Media & Attribute.Required;
+    color: Attribute.String & Attribute.DefaultTo<'#ffffff'>;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::producto.producto'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiConsultConsult extends Schema.CollectionType {
   collectionName: 'consults';
   info: {
@@ -967,12 +1004,16 @@ export interface ApiProductoProducto extends Schema.CollectionType {
   attributes: {
     name_product: Attribute.String;
     description: Attribute.Blocks;
-    category: Attribute.Integer;
     brand: Attribute.String;
     price: Attribute.Decimal;
     stock: Attribute.Integer;
     imagen_product: Attribute.Media;
     status: Attribute.Boolean;
+    categories: Attribute.Relation<
+      'api::producto.producto',
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1045,6 +1086,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::appointment.appointment': ApiAppointmentAppointment;
+      'api::category.category': ApiCategoryCategory;
       'api::consult.consult': ApiConsultConsult;
       'api::order.order': ApiOrderOrder;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
