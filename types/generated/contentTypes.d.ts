@@ -958,7 +958,8 @@ export interface ApiProductoProducto extends Schema.CollectionType {
   info: {
     singularName: 'producto';
     pluralName: 'productos';
-    displayName: 'producto';
+    displayName: 'products';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -990,6 +991,41 @@ export interface ApiProductoProducto extends Schema.CollectionType {
   };
 }
 
+export interface ApiUsuarioUsuario extends Schema.CollectionType {
+  collectionName: 'usuarios';
+  info: {
+    singularName: 'usuario';
+    pluralName: 'usuarios';
+    displayName: 'usuario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    lastname: Attribute.String;
+    correo: Attribute.String;
+    phone: Attribute.String;
+    address: Attribute.Blocks;
+    password: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::usuario.usuario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::usuario.usuario',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1014,6 +1050,7 @@ declare module '@strapi/types' {
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
       'api::product.product': ApiProductProduct;
       'api::producto.producto': ApiProductoProducto;
+      'api::usuario.usuario': ApiUsuarioUsuario;
     }
   }
 }
