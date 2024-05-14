@@ -888,6 +888,38 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   };
 }
 
+export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
+  collectionName: 'order_details';
+  info: {
+    singularName: 'order-detail';
+    pluralName: 'order-details';
+    displayName: 'order_detail';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amount: Attribute.Decimal;
+    price_product: Attribute.Decimal;
+    total_price: Attribute.Decimal;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order-detail.order-detail',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -979,6 +1011,7 @@ declare module '@strapi/types' {
       'api::appointment.appointment': ApiAppointmentAppointment;
       'api::consult.consult': ApiConsultConsult;
       'api::order.order': ApiOrderOrder;
+      'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
       'api::product.product': ApiProductProduct;
       'api::producto.producto': ApiProductoProducto;
     }
