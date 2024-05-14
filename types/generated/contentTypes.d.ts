@@ -821,6 +821,37 @@ export interface ApiAppointmentAppointment extends Schema.CollectionType {
   };
 }
 
+export interface ApiConsultConsult extends Schema.CollectionType {
+  collectionName: 'consults';
+  info: {
+    singularName: 'consult';
+    pluralName: 'consults';
+    displayName: 'consult';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    reason: Attribute.String;
+    reaply: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::consult.consult',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::consult.consult',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -910,6 +941,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::appointment.appointment': ApiAppointmentAppointment;
+      'api::consult.consult': ApiConsultConsult;
       'api::product.product': ApiProductProduct;
       'api::producto.producto': ApiProductoProducto;
     }

@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "consults",
+  "info": {
+    "singularName": "consult",
+    "pluralName": "consults",
+    "displayName": "consult"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "reason": {
+      "type": "string"
+    },
+    "reaply": {
+      "type": "string"
+    }
+  }
+}
