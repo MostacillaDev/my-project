@@ -1014,6 +1014,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
       'manyToMany',
       'api::category.category'
     >;
+    slug: Attribute.UID<'api::producto.producto', 'name_product'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
