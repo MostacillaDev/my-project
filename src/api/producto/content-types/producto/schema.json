@@ -49,11 +49,15 @@
       "targetField": "name_product"
     },
     "extra_images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "C_S_Receta": {
+      "type": "boolean"
     }
   }
 }
