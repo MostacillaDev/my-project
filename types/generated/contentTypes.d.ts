@@ -1007,7 +1007,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
     brand: Attribute.String;
     price: Attribute.Decimal;
     stock: Attribute.Integer;
-    imagen_product: Attribute.Media;
+    cover: Attribute.Media & Attribute.Required;
     status: Attribute.Boolean;
     categories: Attribute.Relation<
       'api::producto.producto',
@@ -1015,6 +1015,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
       'api::category.category'
     >;
     slug: Attribute.UID<'api::producto.producto', 'name_product'>;
+    extra_images: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

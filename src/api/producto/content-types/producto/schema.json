@@ -27,15 +27,12 @@
     "stock": {
       "type": "integer"
     },
-    "imagen_product": {
+    "cover": {
       "type": "media",
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "status": {
@@ -50,6 +47,13 @@
     "slug": {
       "type": "uid",
       "targetField": "name_product"
+    },
+    "extra_images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
