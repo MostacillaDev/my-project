@@ -1016,7 +1016,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
     >;
     slug: Attribute.UID<'api::producto.producto', 'name_product'>;
     extra_images: Attribute.Media;
-    C_S_Receta: Attribute.Boolean;
+    C_S_Receta: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

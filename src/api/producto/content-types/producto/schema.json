@@ -57,7 +57,8 @@
       ]
     },
     "C_S_Receta": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   }
 }
