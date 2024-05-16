@@ -59,6 +59,12 @@
     "C_S_Receta": {
       "type": "boolean",
       "default": false
+    },
+    "use_cart": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::use-cart.use-cart",
+      "inversedBy": "products"
     }
   }
 }

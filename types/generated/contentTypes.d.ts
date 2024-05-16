@@ -771,6 +771,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    use_cart: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::use-cart.use-cart'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1016,7 +1021,12 @@ export interface ApiProductoProducto extends Schema.CollectionType {
     >;
     slug: Attribute.UID<'api::producto.producto', 'name_product'>;
     extra_images: Attribute.Media;
-    C_S_Receta: Attribute.Boolean & Attribute.DefaultTo<false>;
+    C_S_Receta: Attribute.Boolean;
+    use_cart: Attribute.Relation<
+      'api::producto.producto',
+      'manyToOne',
+      'api::use-cart.use-cart'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1032,6 +1042,68 @@ export interface ApiProductoProducto extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiUseCartUseCart extends Schema.CollectionType {
+  collectionName: 'use_carts';
+  info: {
+    singularName: 'use-cart';
+    pluralName: 'use-carts';
+    displayName: 'Use cart';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'api::use-cart.use-cart',
+      'oneToMany',
+      'api::producto.producto'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::use-cart.use-cart',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    quantity: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    amount: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::use-cart.use-cart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::use-cart.use-cart',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::use-cart.use-cart',
+      'oneToMany',
+      'api::use-cart.use-cart'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -1095,6 +1167,7 @@ declare module '@strapi/types' {
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
       'api::product.product': ApiProductProduct;
       'api::producto.producto': ApiProductoProducto;
+      'api::use-cart.use-cart': ApiUseCartUseCart;
       'api::usuario.usuario': ApiUsuarioUsuario;
     }
   }
