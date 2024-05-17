@@ -771,9 +771,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    use_cart: Attribute.Relation<
+    use_carts: Attribute.Relation<
       'plugin::users-permissions.user',
-      'oneToOne',
+      'oneToMany',
       'api::use-cart.use-cart'
     >;
     createdAt: Attribute.DateTime;
@@ -1021,7 +1021,7 @@ export interface ApiProductoProducto extends Schema.CollectionType {
     >;
     slug: Attribute.UID<'api::producto.producto', 'name_product'>;
     extra_images: Attribute.Media;
-    C_S_Receta: Attribute.Boolean;
+    C_S_Receta: Attribute.Boolean & Attribute.DefaultTo<false>;
     use_cart: Attribute.Relation<
       'api::producto.producto',
       'manyToOne',
@@ -1051,6 +1051,7 @@ export interface ApiUseCartUseCart extends Schema.CollectionType {
     singularName: 'use-cart';
     pluralName: 'use-carts';
     displayName: 'Use cart';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1068,7 +1069,7 @@ export interface ApiUseCartUseCart extends Schema.CollectionType {
     >;
     users_permissions_user: Attribute.Relation<
       'api::use-cart.use-cart',
-      'oneToOne',
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     quantity: Attribute.Decimal &
@@ -1078,6 +1079,12 @@ export interface ApiUseCartUseCart extends Schema.CollectionType {
         };
       }>;
     amount: Attribute.Decimal &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    userId: Attribute.Integer &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

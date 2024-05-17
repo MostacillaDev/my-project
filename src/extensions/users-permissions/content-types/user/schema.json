@@ -66,9 +66,9 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "use_cart": {
+    "use_carts": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::use-cart.use-cart",
       "mappedBy": "users_permissions_user"
     }
