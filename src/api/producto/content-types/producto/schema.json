@@ -60,9 +60,9 @@
       "type": "boolean",
       "default": false
     },
-    "use_cart": {
+    "use_carts": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::use-cart.use-cart",
       "inversedBy": "products"
     }

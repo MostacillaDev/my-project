@@ -18,9 +18,9 @@
   "attributes": {
     "products": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::producto.producto",
-      "mappedBy": "use_cart"
+      "mappedBy": "use_carts"
     },
     "users_permissions_user": {
       "type": "relation",
