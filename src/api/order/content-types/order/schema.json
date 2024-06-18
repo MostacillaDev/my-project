@@ -4,33 +4,79 @@
   "info": {
     "singularName": "order",
     "pluralName": "orders",
-    "displayName": "order"
+    "displayName": "order",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "date_order": {
-      "type": "date"
-    },
-    "shipping_date": {
-      "type": "date"
-    },
-    "delivery_date": {
-      "type": "date"
-    },
-    "payment_method": {
+    "email": {
       "type": "string"
     },
-    "order_status": {
+    "address": {
+      "type": "text"
+    },
+    "phone": {
       "type": "string"
     },
-    "total_order": {
+    "name": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "Aguascalientes",
+        "Baja California",
+        "Baja California Sur",
+        "Campeche",
+        "Ciudad de México",
+        "Chiapas",
+        "Chihuahua",
+        "Coahuila",
+        "Colima",
+        "Durango",
+        "Guanajuato",
+        "Guerrero",
+        "Hidalgo",
+        "Jalisco",
+        "Edo Mexico",
+        "Michoacán",
+        "Morelos",
+        "Nayarit",
+        "Nuevo León",
+        "Oaxaca",
+        "Puebla",
+        "Querétaro",
+        "Quintana Roo",
+        "San Luis Potosí",
+        "Sinaloa",
+        "Sonora",
+        "Tabasco",
+        "Tamaulipas",
+        "Tlaxcala",
+        "Veracruz",
+        "Yucatán",
+        "Zacatecas"
+      ]
+    },
+    "total": {
       "type": "decimal"
     },
-    "shipping_adress": {
-      "type": "blocks"
+    "userId": {
+      "type": "integer"
+    },
+    "orderItemList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ordered-items.ordered-items"
+    },
+    "zip": {
+      "type": "integer"
     }
   }
 }

@@ -900,18 +900,57 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     singularName: 'order';
     pluralName: 'orders';
     displayName: 'order';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    date_order: Attribute.Date;
-    shipping_date: Attribute.Date;
-    delivery_date: Attribute.Date;
-    payment_method: Attribute.String;
-    order_status: Attribute.String;
-    total_order: Attribute.Decimal;
-    shipping_adress: Attribute.Blocks;
+    email: Attribute.String;
+    address: Attribute.Text;
+    phone: Attribute.String;
+    name: Attribute.String;
+    city: Attribute.String;
+    state: Attribute.Enumeration<
+      [
+        'Aguascalientes',
+        'Baja California',
+        'Baja California Sur',
+        'Campeche',
+        'Ciudad de M\u00E9xico',
+        'Chiapas',
+        'Chihuahua',
+        'Coahuila',
+        'Colima',
+        'Durango',
+        'Guanajuato',
+        'Guerrero',
+        'Hidalgo',
+        'Jalisco',
+        'Edo Mexico',
+        'Michoac\u00E1n',
+        'Morelos',
+        'Nayarit',
+        'Nuevo Le\u00F3n',
+        'Oaxaca',
+        'Puebla',
+        'Quer\u00E9taro',
+        'Quintana Roo',
+        'San Luis Potos\u00ED',
+        'Sinaloa',
+        'Sonora',
+        'Tabasco',
+        'Tamaulipas',
+        'Tlaxcala',
+        'Veracruz',
+        'Yucat\u00E1n',
+        'Zacatecas'
+      ]
+    >;
+    total: Attribute.Decimal;
+    userId: Attribute.Integer;
+    orderItemList: Attribute.Component<'ordered-items.ordered-items', true>;
+    zip: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
