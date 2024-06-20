@@ -950,7 +950,8 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     total: Attribute.Decimal;
     userId: Attribute.Integer;
     orderItemList: Attribute.Component<'ordered-items.ordered-items', true>;
-    zip: Attribute.Integer;
+    stripeSessionId: Attribute.String;
+    zip: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

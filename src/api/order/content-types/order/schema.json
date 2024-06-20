@@ -75,8 +75,11 @@
       "repeatable": true,
       "component": "ordered-items.ordered-items"
     },
+    "stripeSessionId": {
+      "type": "string"
+    },
     "zip": {
-      "type": "integer"
+      "type": "string"
     }
   }
 }
