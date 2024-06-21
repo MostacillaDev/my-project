@@ -80,6 +80,15 @@
     },
     "zip": {
       "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "completed",
+        "canceled"
+      ],
+      "default": "pending"
     }
   }
 }

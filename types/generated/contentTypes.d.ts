@@ -952,6 +952,8 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     orderItemList: Attribute.Component<'ordered-items.ordered-items', true>;
     stripeSessionId: Attribute.String;
     zip: Attribute.String;
+    status: Attribute.Enumeration<['pending', 'completed', 'canceled']> &
+      Attribute.DefaultTo<'pending'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
